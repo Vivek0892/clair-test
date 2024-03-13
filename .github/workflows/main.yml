@@ -19,8 +19,8 @@ jobs:
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
 
-    - name: Pull vulnerable image
-      run: docker pull owasp/broken-web-app:latest
+    - name: Build Docker image
+      run: docker build -t myapp:latest .
 
     - name: Set up Clair
       run: |
@@ -33,7 +33,7 @@ jobs:
 
     - name: Scan image with Clair
       run: |
-        docker run --network host -v /var/run/docker.sock:/var/run/docker.sock jitesoft/clair-scanner:latest --clair=http://$CLAIR_IP:6060 owasp/broken-web-app:latest
+        docker run --network host -v /var/run/docker.sock:/var/run/docker.sock jitesoft/clair-scanner:latest --clair=http://$CLAIR_IP:6060 myapp:latest
 
     - name: Stop and remove Clair
       run: |
