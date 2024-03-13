@@ -20,7 +20,7 @@ jobs:
       uses: docker/setup-buildx-action@v1
 
     - name: Pull Docker image
-      run: docker pull wordpress:latest
+      run: docker pull ssllvvm6/node-app:0.1
 
     - name: Set up Clair
       run: |
@@ -33,7 +33,7 @@ jobs:
 
     - name: Scan image with Clair
       run: |
-        docker run --network host -v /var/run/docker.sock:/var/run/docker.sock objectiflibre/clair-scanner:latest --clair=http://$CLAIR_IP:6060 wordpress:latest
+        docker run --network host -v /var/run/docker.sock:/var/run/docker.sock objectiflibre/clair-scanner:latest --clair=http://$CLAIR_IP:6060 ssllvvm6/node-app:0.1
 
     - name: Stop and remove Clair
       run: |
