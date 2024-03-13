@@ -20,7 +20,7 @@ jobs:
    #   uses: docker/setup-buildx-action@v1
 
     - name: Pull Docker image
-      run: docker pull wordpress:latest .
+      run: docker pull wordpress:latest
 
     - name: Set up Clair
       run: |
