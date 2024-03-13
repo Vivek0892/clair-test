@@ -33,7 +33,7 @@ jobs:
 
     - name: Scan image with Clair
       run: |
-        docker run --network host -v /var/run/docker.sock:/var/run/docker.sock jitesoft/clair-scanner:latest --clair=http://$CLAIR_IP:6060 myapp:latest
+        docker run --network host -v /var/run/docker.sock:/var/run/docker.sock objectiflibre/clair-scanner:latest --clair=http://$CLAIR_IP:6060 myapp:latest
 
     - name: Stop and remove Clair
       run: |
